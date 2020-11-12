@@ -16,10 +16,10 @@ const Landing = () => {
             <input
             className="form-control col-6  mr-3"
             id="search"
-            placeholder="Find a drink..."
+            placeholder="Find a drink................."
             type="text"
-          />  
-          <button className="btn btn-success col-2">Search</button> 
+          />
+          <button className="btn btn-success col-2">Search</button>
         </SearchContainer>
         <div>
             <Link to="/recipe">Here is the recipe template</Link>
