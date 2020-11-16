@@ -12,12 +12,13 @@ import Recipe from './components/recipe/recipe';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 import drinkReducer from './reducers/drinkReducer';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const rootReducer = combineReducers({
     drinkReducer,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(
     <Provider store={store}>
