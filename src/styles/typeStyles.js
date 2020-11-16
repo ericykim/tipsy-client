@@ -12,7 +12,7 @@ export const H1 = styled.h1`
   -webkit-text-stroke: 2px ${TEXT_BLACK};
   white-space: nowrap;
 
-  @media (min-width: 576px) {
+  @media (min-width: 768px) {
     font-size: 125px;
     -webkit-text-stroke: 3px ${TEXT_BLACK};
   }
@@ -30,9 +30,14 @@ export const H2 = styled.h2`
   font-weight: 400;
   font-style: normal;
 
-  font-size: 50px;
+  font-size: 35px;
   letter-spacing: 2px;
   color: ${SITE_RED};
+
+  @media (min-width: (min-width: 992px) {
+    font-size: 50px;
+  }
+
 `;
 
 export const H3 = styled.h3`
@@ -49,9 +54,14 @@ export const P1 = styled.p`
   font-family: montserrat, sans-serif;
   font-weight: 400;
   font-style: normal;
+
+  margin-bottom: 0;
 `;
 
 export const SmallText = styled.p`
   font-size: 10px;
   color: gray;
+  font-family: montserrat, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 `;
