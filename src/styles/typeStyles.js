@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import '../fonts/fonts.css'
 import { SITE_HIGHLIGHT, SITE_RED, TEXT_BLACK } from "./colors";
 
 export const H1 = styled.h1`
-  font-family: FormulaCondensed-Black, sans-serif;
+  font-family: FormulaCondensed-Black;
   font-weight: 900;
   font-style: normal;
 
@@ -26,7 +27,7 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
-  font-family: FormulaCondensed-Regular, sans-serif;
+  font-family: FormulaCondensed-Regular;
   font-weight: 400;
   font-style: normal;
 
@@ -51,7 +52,7 @@ export const Label = styled.p`
 `;
 
 export const P1 = styled.p`
-  font-family: montserrat, sans-serif;
+  font-family: montserrat;
   font-weight: 400;
   font-style: normal;
 
@@ -61,7 +62,7 @@ export const P1 = styled.p`
 export const SmallText = styled.p`
   font-size: 10px;
   color: gray;
-  font-family: montserrat, sans-serif;
+  font-family: montserrat;
   font-weight: 400;
   font-style: normal;
 `;

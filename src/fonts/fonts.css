@@ -1,31 +1,29 @@
 /* Body font */
 @font-face {
-  font-family: montserrat, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  src: url("https://use.typekit.net/lkq3wab.css");
+    font-family: montserrat, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    src: url('https://use.typekit.net/lkq3wab.css');
 }
 
 /* Body font */
 @font-face {
-  font-family: montserrat, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  src: url("https://use.typekit.net/lkq3wab.css");
+    font-family: montserrat, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    src: url('https://use.typekit.net/lkq3wab.css');
 }
 
 @font-face {
-  font-family: FormulaCondensed-Regular, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  src: local("FormulaCondensed-Regular"),
-    url("./FormulaCondensed-Regular.otf") format("otf");
+    font-family: 'FormulaCondensed-Regular';
+    font-weight: 400;
+    font-style: normal;
+    src: url('./FormulaCondensed-Regular.otf') format('opentype');
 }
 
 @font-face {
-  font-family: FormulaCondensed-Black, sans-serif;
-  font-weight: 900;
-  font-style: normal;
-  src: local("FormulaCondensed-Black"),
-    url("./FormulaCondensed-Black.otf") format("otf");
+    font-family: 'FormulaCondensed-Black';
+    font-weight: 900;
+    font-style: normal;
+    src: url('./FormulaCondensed-Black.otf') format('opentype');
 }
