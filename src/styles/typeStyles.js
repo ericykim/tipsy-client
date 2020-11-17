@@ -52,7 +52,7 @@ export const Label = styled.p`
 `;
 
 export const P1 = styled.p`
-  font-family: montserrat;
+  font-family: Montserrat;
   font-weight: 400;
   font-style: normal;
 
@@ -62,7 +62,7 @@ export const P1 = styled.p`
 export const SmallText = styled.p`
   font-size: 10px;
   color: gray;
-  font-family: montserrat;
+  font-family: Montserrat;
   font-weight: 400;
   font-style: normal;
 `;
