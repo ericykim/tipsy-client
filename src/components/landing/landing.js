@@ -80,9 +80,6 @@ const Landing = ({ drinks, searchDrinkByName, isLoading }) => {
           })}
         </div>
       )}
-      <div>
-        <Link to="/recipe">Here is the recipe template</Link>
-      </div>
     </div>
   );
 };
