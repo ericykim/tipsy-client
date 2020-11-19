@@ -1,6 +1,6 @@
 import wretch from 'wretch';
 
-const url = 'http://tipsyspringboot-env.eba-m3z8n2kz.us-west-2.elasticbeanstalk.com/';
+const url = 'http://tipsyspringboot-env.eba-m3z8n2kz.us-west-2.elasticbeanstalk.com';
 
 export const searchDrinkByName = (q, o, l) => {
     const queryParams = {
