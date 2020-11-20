@@ -1,6 +1,6 @@
 import wretch from 'wretch';
 
-const url = 'https://tipsyspringboot-env.eba-m3z8n2kz.us-west-2.elasticbeanstalk.com';
+const url = 'https://d2sdzmhgzh0p5f.cloudfront.net';
 // const url = 'http://localhost:5000';
 
 export const searchDrinkByName = (q, o, l) => {
