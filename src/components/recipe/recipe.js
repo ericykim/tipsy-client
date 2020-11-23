@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { H1, H2, H3, P1, P1Bold, Title } from "../../styles/typeStyles";
+import React, { useEffect } from "react";
+import { P1, P1Bold, Title } from "../../styles/typeStyles";
 import Nav from "../nav/nav";
 import { getDrinkById } from "../../actions/drinkAction";
 import { connect } from "react-redux";
 import { SITE_RED } from "../../styles/colors";
 import { OrderedList, UnorderedList, ImageContainer, DrinkImage } from "./styled";
-import { faDice } from "@fortawesome/free-solid-svg-icons";
 
 const Recipe = ({ selectedDrink, getDrinkById, isLoading, ...props }) => {
   const { drinkId } = props.match.params;

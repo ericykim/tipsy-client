@@ -12,10 +12,13 @@ import Recipe from './components/recipe/recipe';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
 import drinkReducer from './reducers/drinkReducer';
+import userReducer from './reducers/userReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import Profile from './components/profile/profile';
 
 const rootReducer = combineReducers({
     drinkReducer,
+    userReducer,
 });
 
 const store = createStore(rootReducer, composeWithDevTools());
@@ -28,6 +31,7 @@ ReactDOM.render(
                     <Route exact path='/' component={Landing} />
                     <Route path='/login' component={Login} />
                     <Route path='/signup' component={Signup} />
+                    <Route path='/profile' component={Profile} />
                     <Route path='/:drinkId' component={Recipe} />
                     {/* <Route component={NotFound} /> */}
                 </Switch>

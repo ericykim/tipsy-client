@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { H1, P1 } from "../../styles/typeStyles";
 import Nav from "../nav/nav";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   ListItemGroup,

@@ -1,7 +1,7 @@
 import wretch from 'wretch';
 
-const url = 'https://d2sdzmhgzh0p5f.cloudfront.net';
-// const url = 'http://localhost:5000';
+// const url = 'https://d2sdzmhgzh0p5f.cloudfront.net';
+const url = 'http://localhost:5000';
 
 export const searchDrinkByName = (q, o, l) => {
     const queryParams = {

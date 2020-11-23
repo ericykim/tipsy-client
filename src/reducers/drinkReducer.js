@@ -1,5 +1,3 @@
-import { GET_DRINK_BY_ID } from "../actions/drinkAction";
-
 const initialState = {
     drinks: [],
     isLoading: false,
