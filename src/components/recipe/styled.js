@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { SITE_RED, TEXT_BLACK } from "../../styles/colors";
 
 export const OrderedList = styled.ol`
   padding-left: 18px;
