@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { SITE_HIGHLIGHT, SITE_RED } from "./colors";
+import { SITE_HIGHLIGHT, SITE_RED, TEXT_BLACK } from "./colors";
 
 
 export const SearchArrowImg = styled.img`
@@ -20,16 +21,34 @@ export const StyledSelect = styled.select`
 
 export const StyledButton = styled.button`
     border-radius: 0;
-    background-color: ${SITE_RED};
+    background-color: ${props=> props.color ? props.color : SITE_RED};
     color: white;
     border: none;
+
+    :hover {
+        border: solid 1px ${SITE_HIGHLIGHT};
+        background-color: ${TEXT_BLACK}
+    }
+`
+
+export const StyledButtonLink = styled(Link)`
+    text-decoration: none;
+    color: white;
+
+    :hover {
+        color: inherit;
+        text-decoration: none;
+    }
 `
 
 export const FormInput = styled.input`
     border-radius: 0;
-
-    :focus {
-        border-color: ${SITE_HIGHLIGHT} !important;
-        box-shadow: 0 0 0 0.2rem rgba(208, 83, 83, 0.25);
-    }
 `
+
+export const OrderedList = styled.ol`
+  padding-left: 18px;
+`;
+
+export const UnorderedList = styled.ul`
+  padding-left: 18px;
+`;
