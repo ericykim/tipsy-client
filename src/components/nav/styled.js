@@ -14,4 +14,17 @@ export const Pages = styled.div`
     display: flex;
     float: right;
     flex-direction: row-reverse;
+    align-items: center;
+`
+
+export const NavButton = styled.button`
+background: none!important;
+border: none;
+padding: 0!important;
+cursor: pointer;
+
+:hover {
+    color: ${SITE_RED};
+    text-decoration: underline;
+}
 `

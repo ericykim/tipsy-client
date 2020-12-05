@@ -15,6 +15,7 @@ import drinkReducer from './reducers/drinkReducer';
 import userReducer from './reducers/userReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import Profile from './components/profile/profile';
+import RecipeForm from './components/recipeForm/recipeForm';
 
 const rootReducer = combineReducers({
     drinkReducer,
@@ -32,7 +33,9 @@ ReactDOM.render(
                     <Route path='/login' component={Login} />
                     <Route path='/signup' component={Signup} />
                     <Route path='/profile' component={Profile} />
+                    <Route path='/recipeForm' component={RecipeForm} />
                     <Route path='/:drinkId' component={Recipe} />
+                   
                     {/* <Route component={NotFound} /> */}
                 </Switch>
             </BrowserRouter>

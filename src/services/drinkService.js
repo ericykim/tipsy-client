@@ -18,4 +18,9 @@ export const getDrinkById = (drinkId) => {
     return wretch(`${url}/api/v1/drinks/${dId}`).get().json();
 };
 
-export default { searchDrinkByName, getDrinkById };
+export const createDrink = (drink) => {
+    return wretch(`${url}/api/v1/drinks`).json(drink).post().json();
+};
+
+
+export default { searchDrinkByName, getDrinkById, createDrink };
