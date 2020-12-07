@@ -4,7 +4,8 @@ import Nav from "../nav/nav";
 import { getDrinkById } from "../../actions/drinkAction";
 import { connect } from "react-redux";
 import { SITE_RED } from "../../styles/colors";
-import { OrderedList, UnorderedList, ImageContainer, DrinkImage } from "./styled";
+import {OrderedList, UnorderedList} from "../../styles/globalElements"
+import { ImageContainer, DrinkImage } from "./styled";
 
 const Recipe = ({ selectedDrink, getDrinkById, isLoading, ...props }) => {
   const { drinkId } = props.match.params;
@@ -14,6 +15,8 @@ const Recipe = ({ selectedDrink, getDrinkById, isLoading, ...props }) => {
       getDrinkById(drinkId);
     }
   }, [drinkId, getDrinkById]);
+
+  console.log('this is the recipe', selectedDrink)
 
   return (
     <div className="container">

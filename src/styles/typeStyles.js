@@ -60,7 +60,9 @@ export const H2 = styled.h2`
 
 export const H3 = styled.h3`
   font-size: 20px;
-  color: purple;
+  font-family: Montserrat;
+  font-weight: 400;
+  color: ${SITE_RED}
 `;
 
 export const Label = styled.p`
@@ -95,7 +97,7 @@ export const P2 = styled.p`
 
 export const SmallText = styled.p`
   font-size: 10px;
-  color: gray;
+  color: ${props => props.color ? props.color : 'gray'};
   font-family: Montserrat;
   font-weight: 400;
   font-style: normal;

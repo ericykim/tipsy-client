@@ -18,6 +18,8 @@ import Profile from './components/profile/profile';
 import Footer from './components/footer/footer';
 import PrivacyContainer from './container/privacy/privacyContainer';
 import ScrollToTop from './utils/scrollToTop';
+import RecipeForm from './components/recipeForm/recipeForm';
+
 
 const rootReducer = combineReducers({
     drinkReducer,
@@ -37,12 +39,14 @@ ReactDOM.render(
                         <Route path='/login' component={Login} />
                         <Route path='/signup' component={Signup} />
                         <Route path='/profile' component={Profile} />
+                        <Route path='/recipeForm' component={RecipeForm} />
                         <Route exact path='/privacy-policy' component={PrivacyContainer} />
                         <Route path='/:drinkId' component={Recipe} />
                         {/* <Route component={NotFound} /> */}
                     </Switch>
                 </div>
                 <Footer />
+
             </BrowserRouter>
         </React.StrictMode>
     </Provider>,
