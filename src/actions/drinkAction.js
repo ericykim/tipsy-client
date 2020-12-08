@@ -50,9 +50,9 @@ export const getDrinkById = (dispatch, drinkId) => {
         });
 };
 
-export const createDrink = (dispatch, drink) => {
+export const createDrink = (dispatch, userId, drink) => {
     drinkService
-        .createDrink(drink)
+        .createDrink(userId, drink)
         .then((createdDrink) => {
             dispatch({
                 type: CREATE_DRINK,
@@ -62,9 +62,9 @@ export const createDrink = (dispatch, drink) => {
 };
 
 
-export const updateDrink = (dispatch, drink, drinkId) => {
+export const updateDrink = (dispatch, userId, drink, drinkId) => {
     drinkService
-        .updateDrink(drinkId, drink)
+        .updateDrink(userId, drinkId, drink)
         .then((updatedDrink) => {
             dispatch({
                 type: UPDATE_DRINK,
@@ -73,9 +73,9 @@ export const updateDrink = (dispatch, drink, drinkId) => {
         })
 };
 
-export const deleteDrink = (dispatch, drinkId) => {
+export const deleteDrink = (dispatch, userId, drinkId) => {
     drinkService
-        .deleteDrink(drinkId)
+        .deleteDrink(userId, drinkId)
         .then((status) => {
             dispatch({
                 type: DELETE_DRINK

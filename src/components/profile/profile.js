@@ -20,11 +20,6 @@ const Profile = ({ getProfile, profile }) => {
     getProfile();
   }, [getProfile]);
 
-  console.log("this is profile", profile);
-  profile = {
-    userType: "BARTENDER",
-  };
-
   const recipes = [
     {
       drinkId: 62,
@@ -190,10 +185,10 @@ const Profile = ({ getProfile, profile }) => {
         <div className="d-block d-sm-flex">
           {profile.userType === "BARTENDER" && (
             <div className="col-12 col-sm-3">
-              <P1Bold color={SITE_RED}>Recipes</P1Bold>
+              <P1Bold color={SITE_RED}>Created Recipes</P1Bold>
               <UnorderedList>
-                {recipes &&
-                  recipes.map((recipe, i) => {
+                {profile.createdDrinks &&
+                  profile.createdDrinks.map((recipe, i) => {
                     return (
                       <ListItem key={i}>
                         <li>
@@ -214,8 +209,8 @@ const Profile = ({ getProfile, profile }) => {
           <div className="col-12 col-sm-3">
             <P1Bold color={SITE_RED}>Favorites</P1Bold>
             <UnorderedList>
-              {favorites &&
-                favorites.map((favorite, i) => {
+              {profile.likedDrinks &&
+                profile.likedDrinks.map((favorite, i) => {
                   return (
                     <li key={i}>
                       <P1>{favorite.drinkName}</P1>

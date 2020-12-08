@@ -1,8 +1,8 @@
 import wretch from 'wretch';
 
 // const url = 'https://d2sdzmhgzh0p5f.cloudfront.net';
-// const url = 'http://localhost:5000';
-const url = 'https://tipsy.buzz';
+const url = 'http://localhost:5000';
+// const url = 'https://tipsy.buzz';
 
 export const searchDrinkByName = (q, o, l) => {
     const queryParams = {
@@ -18,18 +18,18 @@ export const getDrinkById = (drinkId) => {
     return wretch(`${url}/api/v1/drinks/${dId}`).get().json();
 };
 
-export const createDrink = (drink) => {
-    return wretch(`${url}/api/v1/drinks`).json(drink).post().json();
+export const createDrink = (userId, drink) => {
+    return wretch(`${url}/api/v1/users/${userId}/createdDrinks`).json(drink).post().json();
 };
 
-export const updateDrink = (drinkId, drink) => {
+export const updateDrink = (userId, drinkId, drink) => {
     const dId = parseInt(drinkId)
-    return wretch(`${url}/api/v1/drinks/${dId}`).json(drink).put().json();
+    return wretch(`${url}/api/v1/users/${userId}/createdDrinks/${dId}`).json(drink).put().json();
 };
 
-export const deleteDrink = (drinkId) => {
+export const deleteDrink = (userId, drinkId) => {
     const dId = parseInt(drinkId)
-    return wretch(`${url}/api/v1/drinks/${dId}`).delete().json;
+    return wretch(`${url}/api/v1/users/${userId}/drinks/${dId}`).delete().json;
 };
 
 
