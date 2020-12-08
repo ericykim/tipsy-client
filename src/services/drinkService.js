@@ -22,5 +22,15 @@ export const createDrink = (drink) => {
     return wretch(`${url}/api/v1/drinks`).json(drink).post().json();
 };
 
+export const updateDrink = (drinkId, drink) => {
+    const dId = parseInt(drinkId)
+    return wretch(`${url}/api/v1/drinks/${dId}`).json(drink).put().json();
+};
 
-export default { searchDrinkByName, getDrinkById, createDrink };
+export const deleteDrink = (drinkId) => {
+    const dId = parseInt(drinkId)
+    return wretch(`${url}/api/v1/drinks/${dId}`).delete().json;
+};
+
+
+export default { searchDrinkByName, getDrinkById, createDrink, updateDrink, deleteDrink };

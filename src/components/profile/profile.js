@@ -1,18 +1,29 @@
 import React, { useEffect } from "react";
 
-import { logoutUser, getProfile } from "../../actions/userAction";
+import { getProfile } from "../../actions/userAction";
 import { connect } from "react-redux";
 import { SITE_RED } from "../../styles/colors";
 import { H3, P1, P1Bold, Title } from "../../styles/typeStyles";
-import { StyledButton, UnorderedList, StyledButtonLink } from "../../styles/globalElements";
+import {
+  StyledButton,
+  UnorderedList,
+  StyledButtonLink,
+  ListItem,
+} from "../../styles/globalElements";
 import Nav from "../nav/nav";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Profile = ({ getProfile, profile }) => {
   useEffect(() => {
     getProfile();
-  }, []);
+  }, [getProfile]);
 
   console.log("this is profile", profile);
+  profile = {
+    userType: "BARTENDER",
+  };
 
   const recipes = [
     {
@@ -73,36 +84,7 @@ const Profile = ({ getProfile, profile }) => {
         { stepId: 12, instructions: "Layered in a shot glass", stepOrder: 0 },
       ],
     },
-    {
-      drinkId: 62,
-      drinkName: "ABC",
-      imageUrl:
-        "https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg",
-      ingredients: [
-        {
-          ingredientId: 206,
-          name: "Amaretto",
-          amount: "1/3 ",
-          ingredientOrder: 0,
-        },
-        {
-          ingredientId: 207,
-          name: "Baileys irish cream",
-          amount: "1/3 ",
-          ingredientOrder: 1,
-        },
-        {
-          ingredientId: 208,
-          name: "Cognac",
-          amount: "1/3 ",
-          ingredientOrder: 2,
-        },
-      ],
-      steps: [
-        { stepId: 12, instructions: "Layered in a shot glass", stepOrder: 0 },
-      ],
-    },
-  ]
+  ];
   const favorites = [
     {
       drinkId: 62,
@@ -191,7 +173,7 @@ const Profile = ({ getProfile, profile }) => {
         { stepId: 12, instructions: "Layered in a shot glass", stepOrder: 0 },
       ],
     },
-  ]
+  ];
 
   return (
     <div className="container">
@@ -213,9 +195,17 @@ const Profile = ({ getProfile, profile }) => {
                 {recipes &&
                   recipes.map((recipe, i) => {
                     return (
-                      <li key={i}>
-                        <P1>{recipe.drinkName}</P1>
-                      </li>
+                      <ListItem key={i}>
+                        <li>
+                          <P1>{recipe.drinkName}</P1>
+                        </li>
+                        <Link to={`/recipeForm/${recipe.drinkId}`}>
+                          <FontAwesomeIcon
+                            icon={faPencilAlt}
+                            className="float-right"
+                          />
+                        </Link>
+                      </ListItem>
                     );
                   })}
               </UnorderedList>

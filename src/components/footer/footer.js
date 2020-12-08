@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { SITE_RED } from '../../styles/colors';
 import logo from '../../assets/SVG/logo.svg';
-import { Logo, LogoContainer } from '../../styles/globalElements';
-import { H1, P1, SmallText, P2 } from '../../styles/typeStyles';
+import { Logo } from '../../styles/globalElements';
+import { P1, P2 } from '../../styles/typeStyles';
 
 export const FooterWrapper = styled.div`
     left: 0;
@@ -61,9 +61,9 @@ const Footer = () => {
         <FooterWrapper>
             <Logo src={logo} />
             <SiteMap className={'container'}>
-                {siteMap.map((link) => {
+                {siteMap.map((link, i) => {
                     return (
-                        <SiteMapLink to={link.link}>
+                        <SiteMapLink key={i} to={link.link}>
                             <P1>{link.name}</P1>
                         </SiteMapLink>
                     );
