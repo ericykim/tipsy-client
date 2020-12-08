@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { P1, SmallText } from '../../styles/typeStyles';
-import { useHistory } from 'react-router-dom';
 import { FormInput, StyledButton, UnorderedList, ListItem } from '../../styles/globalElements';
 import Nav from '../nav/nav';
-import drinkService from '../../services/drinkService';
 import { connect } from 'react-redux';
 import { GREEN, SITE_RED } from '../../styles/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { getDrinkById } from '../../actions/drinkAction';
+import { createDrink, updateDrink, deleteDrink } from '../../actions/userAction';
 
-const RecipeForm = ({ userId, selectedDrink, getDrinkById, isLoading, ...props }) => {
+const RecipeForm = ({
+    userId,
+    createDrink,
+    updateDrink,
+    deleteDrink,
+    selectedDrink,
+    getDrinkById,
+    isLoading,
+    ...props
+}) => {
     const { drinkId } = props.match.params;
-    const history = useHistory();
 
     // Form states
     const [drinkName, setDrinkName] = useState('');
@@ -64,7 +71,7 @@ const RecipeForm = ({ userId, selectedDrink, getDrinkById, isLoading, ...props }
                 ingredients: ingredients,
                 steps: steps,
             };
-            drinkService.createDrink(userId, drink).then((drink) => history.push(`/${drink.drinkId}`));
+            createDrink(userId, drink);
         }
     };
 
@@ -78,15 +85,12 @@ const RecipeForm = ({ userId, selectedDrink, getDrinkById, isLoading, ...props }
             selectedDrink.ingredients = ingredients;
             selectedDrink.steps = steps;
 
-            drinkService
-                .updateDrink(userId, selectedDrink.drinkId, selectedDrink)
-                .then((drink) => history.push(`/${drink.drinkId}`));
+            updateDrink(userId, selectedDrink.drinkId, selectedDrink);
         }
     };
 
-    const deleteDrink = () => {
-        drinkService.deleteDrink(userId, selectedDrink.drinkId);
-        history.push('/deleted');
+    const deleteSelectedDrink = () => {
+        deleteDrink(userId, selectedDrink.drinkId);
     };
 
     return (
@@ -231,7 +235,7 @@ const RecipeForm = ({ userId, selectedDrink, getDrinkById, isLoading, ...props }
                             </StyledButton>
                             <StyledButton
                                 color={SITE_RED}
-                                onClick={() => deleteDrink()}
+                                onClick={() => deleteSelectedDrink()}
                                 className='btn btn-success col-12 my-3'
                             >
                                 <P1>delete</P1>
@@ -261,6 +265,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => {
     return {
         getDrinkById: (drinkId) => getDrinkById(dispatch, drinkId),
+        createDrink: (userId, drink) => createDrink(dispatch, userId, drink),
+        updateDrink: (userId, drinkId, drink) => updateDrink(dispatch, userId, drinkId, drink),
+        deleteDrink: (userId, drinkId) => deleteDrink(dispatch, userId, drinkId),
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeForm);

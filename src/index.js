@@ -4,7 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import Landing from "./components/landing/landing";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import Login from "./components/login/login";
 import Signup from "./components/signup/signup";
 import Recipe from "./components/recipe/recipe";
@@ -20,6 +20,7 @@ import PrivacyContainer from "./container/privacy/privacyContainer";
 import ScrollToTop from "./utils/scrollToTop";
 import RecipeForm from "./components/recipeForm/recipeForm";
 import Deleted from "./components/deleted/deleted";
+import history from './history'
 
 const rootReducer = combineReducers({
   drinkReducer,
@@ -31,7 +32,7 @@ const store = createStore(rootReducer, composeWithDevTools());
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <BrowserRouter>
+      <Router history={history}>
         <ScrollToTop />
         <div style={{ minHeight: "100vh" }}>
           <Switch>
@@ -47,7 +48,7 @@ ReactDOM.render(
           </Switch>
         </div>
         <Footer />
-      </BrowserRouter>
+      </Router>
     </React.StrictMode>
   </Provider>,
   document.getElementById("root")

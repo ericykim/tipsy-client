@@ -32,4 +32,18 @@ export const registerUser = (user) => {
         .json();
 };
 
-export default { registerUser, profile, login, logout };
+export const createDrink = (userId, drink) => {
+    return wretch(`${url}/api/v1/users/${userId}/createdDrinks`).json(drink).post().json();
+};
+
+export const updateDrink = (userId, drinkId, drink) => {
+    const dId = parseInt(drinkId);
+    return wretch(`${url}/api/v1/users/${userId}/createdDrinks/${dId}`).json(drink).put().json();
+};
+
+export const deleteDrink = (userId, drinkId) => {
+    const dId = parseInt(drinkId);
+    return wretch(`${url}/api/v1/users/${userId}/createdDrinks/${dId}`).delete().json();
+};
+
+export default { registerUser, profile, login, logout, createDrink, updateDrink, deleteDrink };

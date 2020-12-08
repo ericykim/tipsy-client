@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 
 const Profile = ({ getProfile, profile }) => {
   useEffect(() => {
-    getProfile();
+    // getProfile();
   }, [getProfile]);
 
   const recipes = [

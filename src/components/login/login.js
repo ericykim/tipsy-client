@@ -5,13 +5,12 @@ import logo from '../../assets/SVG/logo.svg';
 import { StyledButton, FormInput, Logo, LogoContainer } from '../../styles/globalElements';
 import { loginUser } from '../../actions/userAction';
 import { connect } from 'react-redux';
-import { useHistory } from "react-router-dom";
+import history from '../../history';
 
 
 const Login = ({ loginUser }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const history = useHistory();
 
     const userLogin = () => {
         const user = {

@@ -6,11 +6,10 @@ import { P1 } from "../../styles/typeStyles";
 import { NavButton, Pages, StyledLink } from "./styled";
 import { logoutUser } from "../../actions/userAction";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import history from '../../history';
 
 const Nav = ({ logoutUser, profile }) => {
   const loggedIn = profile.username;
-  const history = useHistory();
 
   const logout = () => {
     logoutUser();

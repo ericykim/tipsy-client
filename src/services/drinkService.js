@@ -18,19 +18,4 @@ export const getDrinkById = (drinkId) => {
     return wretch(`${url}/api/v1/drinks/${dId}`).get().json();
 };
 
-export const createDrink = (userId, drink) => {
-    return wretch(`${url}/api/v1/users/${userId}/createdDrinks`).json(drink).post().json();
-};
-
-export const updateDrink = (userId, drinkId, drink) => {
-    const dId = parseInt(drinkId)
-    return wretch(`${url}/api/v1/users/${userId}/createdDrinks/${dId}`).json(drink).put().json();
-};
-
-export const deleteDrink = (userId, drinkId) => {
-    const dId = parseInt(drinkId)
-    return wretch(`${url}/api/v1/users/${userId}/drinks/${dId}`).delete().json;
-};
-
-
-export default { searchDrinkByName, getDrinkById, createDrink, updateDrink, deleteDrink };
+export default { searchDrinkByName, getDrinkById };
