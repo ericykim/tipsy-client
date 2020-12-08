@@ -52,3 +52,10 @@ export const OrderedList = styled.ol`
 export const UnorderedList = styled.ul`
   padding-left: 18px;
 `;
+
+export const ListItem = styled.div`
+    overflow-wrap: break-word;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+`

@@ -4,6 +4,8 @@ export const SEARCH_DRINK_BY_NAME = 'SEARCH_DRINK_BY_NAME';
 export const FETCH_DRINK_LOADING = 'FETCH_DRINK_LOADING';
 export const GET_DRINK_BY_ID = 'GET_DRINK_BY_ID';
 export const CREATE_DRINK = 'CREATE_DRINK';
+export const UPDATE_DRINK = 'UPDATE_DRINK';
+export const DELETE_DRINK = 'DELETE_DRINK';
 
 
 
@@ -55,6 +57,28 @@ export const createDrink = (dispatch, drink) => {
             dispatch({
                 type: CREATE_DRINK,
                 newDrink: createdDrink,
+            });
+        })
+};
+
+
+export const updateDrink = (dispatch, drink, drinkId) => {
+    drinkService
+        .updateDrink(drinkId, drink)
+        .then((updatedDrink) => {
+            dispatch({
+                type: UPDATE_DRINK,
+                updatedDrink: updatedDrink,
+            });
+        })
+};
+
+export const deleteDrink = (dispatch, drinkId) => {
+    drinkService
+        .deleteDrink(drinkId)
+        .then((status) => {
+            dispatch({
+                type: DELETE_DRINK
             });
         })
 };

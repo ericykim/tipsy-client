@@ -4,7 +4,7 @@ import logo from "../../assets/SVG/logo.svg";
 import { Logo, LogoContainer } from "../../styles/globalElements";
 import { P1 } from "../../styles/typeStyles";
 import { NavButton, Pages, StyledLink } from "./styled";
-import { logoutUser, getProfile } from "../../actions/userAction";
+import { logoutUser } from "../../actions/userAction";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
