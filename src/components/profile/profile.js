@@ -220,7 +220,7 @@ const Profile = ({ getProfile, profile }) => {
                         </UnorderedList>
                     </div>
                 </div>
-                {profile.userType === 'bartender' ? (
+                {profile.userType === 'BARTENDER' ? (
                     <StyledButton className='col-2 py-3'>
                         <StyledButtonLink to='/recipeForm'>Create Recipe</StyledButtonLink>
                     </StyledButton>
