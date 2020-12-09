@@ -3,6 +3,7 @@ import { profile } from '../services/userService';
 const initialState = {
     profile: {
         createdDrinks: [],
+        likedDrinks: [],
     },
 };
 
@@ -31,6 +32,22 @@ const courseReducer = (state = initialState, action) => {
                 ...state,
                 profile: Object.assign({}, state.profile, {
                     createdDrinks: state.profile.createdDrinks.filter(
+                        (drinks) => drinks.drinkId !== action.drinkId,
+                    ),
+                }),
+            };
+        case 'LIKE_DRINK':
+            return {
+                ...state,
+                profile: Object.assign({}, state.profile, {
+                    likedDrinks: [...state.profile.likedDrinks, action.drink],
+                }),
+            };
+        case 'UNLIKE_DRINK':
+            return {
+                ...state,
+                profile: Object.assign({}, state.profile, {
+                    likedDrinks: state.profile.likedDrinks.filter(
                         (drinks) => drinks.drinkId !== action.drinkId,
                     ),
                 }),

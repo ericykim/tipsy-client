@@ -1,8 +1,8 @@
 import wretch from 'wretch';
 
 // const url = 'https://d2sdzmhgzh0p5f.cloudfront.net';
-// const url = 'http://localhost:5000';
-const url = 'https://tipsy.buzz';
+const url = 'http://localhost:5000';
+// const url = 'https://tipsy.buzz';
 
 export const logout = (user) => {
     return wretch(`${url}/api/v1/users/logout`).options({ credentials: 'include' }).get().res();
@@ -46,4 +46,28 @@ export const deleteDrink = (userId, drinkId) => {
     return wretch(`${url}/api/v1/users/${userId}/createdDrinks/${dId}`).delete().res();
 };
 
-export default { registerUser, profile, login, logout, createDrink, updateDrink, deleteDrink };
+export const likedDrinks = (userId, drink) => {
+    return wretch(`${url}/api/v1/users/${userId}/likedDrinks`).get().json();
+};
+
+export const likeDrink = (userId, drink) => {
+    return wretch(`${url}/api/v1/users/${userId}/likedDrinks`).json(drink).post().json();
+};
+
+export const unlikeDrink = (userId, drinkId) => {
+    const dId = parseInt(drinkId);
+    return wretch(`${url}/api/v1/users/${userId}/likedDrinks/${dId}`).delete().res();
+};
+
+export default {
+    registerUser,
+    profile,
+    login,
+    logout,
+    createDrink,
+    updateDrink,
+    deleteDrink,
+    likedDrinks,
+    unlikeDrink,
+    likeDrink,
+};

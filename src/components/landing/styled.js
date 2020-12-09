@@ -44,7 +44,7 @@ export const SearchButton = styled.button`
   right: 0;
 `;
 
-export const ListItemGroup = styled(Link)`
+export const ListItemGroup = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
