@@ -8,6 +8,8 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const CREATE_DRINK = 'CREATE_DRINK';
 export const UPDATE_DRINK = 'UPDATE_DRINK';
 export const DELETE_DRINK = 'DELETE_DRINK';
+export const LIKE_DRINK = 'LIKE_DRINK';
+export const UNLIKE_DRINK = 'UNLIKE_DRINK';
 
 export const registerUser = (dispatch, user) => {
     userService.registerUser(user).then((profile) => {
@@ -73,5 +75,23 @@ export const deleteDrink = (dispatch, userId, drinkId) => {
             drinkId: drinkId,
         });
         history.push('/deleted');
+    });
+};
+
+export const likeDrink = (dispatch, userId, drink) => {
+    userService.likeDrink(userId, drink).then((drink) => {
+        dispatch({
+            type: LIKE_DRINK,
+            drink: drink,
+        });
+    });
+};
+
+export const unlikeDrink = (dispatch, userId, drinkId) => {
+    userService.unlikeDrink(userId, drinkId).then((status) => {
+        dispatch({
+            type: UNLIKE_DRINK,
+            drinkId: drinkId,
+        });
     });
 };
