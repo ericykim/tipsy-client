@@ -3,6 +3,7 @@ import history from '../history';
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const GET_PROFILE = 'GET_PROFILE';
+export const GET_PROFILE_BY_ID = 'GET_PROFILE_BY_ID';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const CREATE_DRINK = 'CREATE_DRINK';
@@ -28,6 +29,15 @@ export const getProfile = (dispatch) => {
         });
     });
 };
+
+export const getProfileById = (dispatch, userId) => {
+    userService.getProfileById(userId).then((profile) => {
+        dispatch({
+            type: GET_PROFILE_BY_ID,
+            profile: profile,
+        });
+    });
+}
 
 export const loginUser = (dispatch, user) => {
     userService.login(user).then((profile) => {

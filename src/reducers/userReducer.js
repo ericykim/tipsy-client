@@ -5,6 +5,7 @@ const initialState = {
         createdDrinks: [],
         likedDrinks: [],
     },
+    searchProfile: {}
 };
 
 const courseReducer = (state = initialState, action) => {
@@ -52,6 +53,11 @@ const courseReducer = (state = initialState, action) => {
                     ),
                 }),
             };
+        case 'GET_PROFILE_BY_ID':
+            return {
+                ...state,
+                searchProfile: action.profile
+            }
         case 'REGISTER_USER':
         case 'GET_PROFILE':
         case 'LOGIN_USER':

@@ -11,6 +11,7 @@ import { createDrink, updateDrink, deleteDrink } from '../../actions/userAction'
 
 const RecipeForm = ({
     userId,
+    username,
     createDrink,
     updateDrink,
     deleteDrink,
@@ -70,6 +71,8 @@ const RecipeForm = ({
                 imageURL: imageURL,
                 ingredients: ingredients,
                 steps: steps,
+                creatorId: userId,
+                creatorUsername: username,
             };
             createDrink(userId, drink);
         }
@@ -260,6 +263,7 @@ const mapStateToProps = (state, ownProps) => ({
     selectedDrink: state.drinkReducer.selectedDrink,
     isLoading: state.drinkReducer.isLoading,
     userId: state.userReducer.profile.id,
+    username: state.userReducer.profile.username,
 });
 
 const mapDispatchToProps = (dispatch) => {

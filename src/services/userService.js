@@ -1,8 +1,8 @@
 import wretch from 'wretch';
 
 // const url = 'https://d2sdzmhgzh0p5f.cloudfront.net';
-// const url = 'http://localhost:5000';
-const url = 'https://tipsy.buzz';
+const url = 'http://localhost:5000';
+// const url = 'https://tipsy.buzz';
 
 export const logout = (user) => {
     return wretch(`${url}/api/v1/users/logout`).options({ credentials: 'include' }).get().res();
@@ -59,6 +59,11 @@ export const unlikeDrink = (userId, drinkId) => {
     return wretch(`${url}/api/v1/users/${userId}/likedDrinks/${dId}`).delete().res();
 };
 
+export const getProfileById = (userId) => {
+    return wretch(`${url}/api/v1/users/${userId}`).get().json();
+}
+
+
 export default {
     registerUser,
     profile,
@@ -70,4 +75,5 @@ export default {
     likedDrinks,
     unlikeDrink,
     likeDrink,
+    getProfileById
 };

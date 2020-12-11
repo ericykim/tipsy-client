@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { getProfile } from '../../actions/userAction';
+import { getProfileById } from '../../actions/userAction';
 import { connect } from 'react-redux';
 import { SITE_RED } from '../../styles/colors';
 import { H3, P1, P1Bold, Title } from '../../styles/typeStyles';
@@ -15,180 +15,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-const Profile = ({ getProfile, profile }) => {
+const Profile = ({ searchProfile, getProfileById, profile, ...props }) => {
+    let userProfile = profile;
+    const profileId = props.match.params.profileId;
+
     useEffect(() => {
-        // getProfile();
-    }, [getProfile]);
+        if (profileId != profile.id) {
+            getProfileById(profileId);
+        } else {
+            userProfile = profile;
+        }
+    }, [profileId]);
 
-    //   const recipes = [
-    //     {
-    //       drinkId: 62,
-    //       drinkName: "ABC",
-    //       imageUrl:
-    //         "https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg",
-    //       ingredients: [
-    //         {
-    //           ingredientId: 206,
-    //           name: "Amaretto",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 0,
-    //         },
-    //         {
-    //           ingredientId: 207,
-    //           name: "Baileys irish cream",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 1,
-    //         },
-    //         {
-    //           ingredientId: 208,
-    //           name: "Cognac",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 2,
-    //         },
-    //       ],
-    //       steps: [
-    //         { stepId: 12, instructions: "Layered in a shot glass", stepOrder: 0 },
-    //       ],
-    //     },
-    //     {
-    //       drinkId: 62,
-    //       drinkName: "ABC",
-    //       imageUrl:
-    //         "https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg",
-    //       ingredients: [
-    //         {
-    //           ingredientId: 206,
-    //           name: "Amaretto",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 0,
-    //         },
-    //         {
-    //           ingredientId: 207,
-    //           name: "Baileys irish cream",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 1,
-    //         },
-    //         {
-    //           ingredientId: 208,
-    //           name: "Cognac",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 2,
-    //         },
-    //       ],
-    //       steps: [
-    //         { stepId: 12, instructions: "Layered in a shot glass", stepOrder: 0 },
-    //       ],
-    //     },
-    //   ];
-    //   const favorites = [
-    //     {
-    //       drinkId: 62,
-    //       drinkName: "ABC",
-    //       imageUrl:
-    //         "https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg",
-    //       ingredients: [
-    //         {
-    //           ingredientId: 206,
-    //           name: "Amaretto",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 0,
-    //         },
-    //         {
-    //           ingredientId: 207,
-    //           name: "Baileys irish cream",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 1,
-    //         },
-    //         {
-    //           ingredientId: 208,
-    //           name: "Cognac",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 2,
-    //         },
-    //       ],
-    //       steps: [
-    //         { stepId: 12, instructions: "Layered in a shot glass", stepOrder: 0 },
-    //       ],
-    //     },
-    //     {
-    //       drinkId: 62,
-    //       drinkName: "ABC",
-    //       imageUrl:
-    //         "https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg",
-    //       ingredients: [
-    //         {
-    //           ingredientId: 206,
-    //           name: "Amaretto",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 0,
-    //         },
-    //         {
-    //           ingredientId: 207,
-    //           name: "Baileys irish cream",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 1,
-    //         },
-    //         {
-    //           ingredientId: 208,
-    //           name: "Cognac",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 2,
-    //         },
-    //       ],
-    //       steps: [
-    //         { stepId: 12, instructions: "Layered in a shot glass", stepOrder: 0 },
-    //       ],
-    //     },
-    //     {
-    //       drinkId: 62,
-    //       drinkName: "ABC",
-    //       imageUrl:
-    //         "https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg",
-    //       ingredients: [
-    //         {
-    //           ingredientId: 206,
-    //           name: "Amaretto",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 0,
-    //         },
-    //         {
-    //           ingredientId: 207,
-    //           name: "Baileys irish cream",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 1,
-    //         },
-    //         {
-    //           ingredientId: 208,
-    //           name: "Cognac",
-    //           amount: "1/3 ",
-    //           ingredientOrder: 2,
-    //         },
-    //       ],
-    //       steps: [
-    //         { stepId: 12, instructions: "Layered in a shot glass", stepOrder: 0 },
-    //       ],
-    //     },
-    //   ];
-
+    if (profileId != profile.id) {
+        userProfile = searchProfile;
+    }
     return (
         <div className='container'>
             <Nav />
             <div>
                 <Title className='mb-4' static>
-                    {profile.userType}
+                    {userProfile.userType}
                 </Title>
                 <div className='col-12 mb-5'>
                     <H3>
-                        {profile.firstName} {profile.lastName}
+                        {userProfile.firstName} {userProfile.lastName}
                     </H3>
                 </div>
                 <div className='d-block d-sm-flex'>
-                    {profile.userType === 'BARTENDER' && (
+                    {userProfile.userType === 'BARTENDER' && (
                         <div className='col-12 col-sm-3'>
                             <P1Bold color={SITE_RED}>Created Recipes</P1Bold>
                             <UnorderedList>
-                                {profile.createdDrinks &&
-                                    profile.createdDrinks.map((recipe, i) => {
+                                {userProfile.createdDrinks &&
+                                    userProfile.createdDrinks.map((recipe, i) => {
                                         return (
                                             <ListItem key={i}>
                                                 <li>
@@ -209,8 +69,8 @@ const Profile = ({ getProfile, profile }) => {
                     <div className='col-12 col-sm-3'>
                         <P1Bold color={SITE_RED}>Favorites</P1Bold>
                         <UnorderedList>
-                            {profile.likedDrinks &&
-                                profile.likedDrinks.map((favorite, i) => {
+                            {userProfile.likedDrinks &&
+                                userProfile.likedDrinks.map((favorite, i) => {
                                     return (
                                         <li key={i}>
                                             <P1>{favorite.drinkName}</P1>
@@ -220,7 +80,7 @@ const Profile = ({ getProfile, profile }) => {
                         </UnorderedList>
                     </div>
                 </div>
-                {profile.userType === 'BARTENDER' ? (
+                {userProfile.userType === 'BARTENDER' ? (
                     <StyledButton className='col-2 py-3'>
                         <StyledButtonLink to='/recipeForm'>Create Recipe</StyledButtonLink>
                     </StyledButton>
@@ -234,11 +94,13 @@ const Profile = ({ getProfile, profile }) => {
 
 const mapStateToProps = (state, ownProps) => ({
     profile: state.userReducer.profile,
+    searchProfile: state.userReducer.searchProfile,
 });
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getProfile: () => getProfile(dispatch),
+        // getProfile: () => getProfile(dispatch),
+        getProfileById: (userId) => getProfileById(dispatch, userId),
     };
 };
 

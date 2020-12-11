@@ -1,7 +1,7 @@
 const initialState = {
     drinks: [],
     isLoading: false,
-    selectedDrink: {}
+    selectedDrink: {},
 };
 
 const courseReducer = (state = initialState, action) => {
@@ -20,6 +20,11 @@ const courseReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: action.isLoading,
+            };
+        case 'CLEAR_DRINK_SEARCH':
+            return {
+                ...state,
+                drinks: [],
             };
         default:
             return state;
