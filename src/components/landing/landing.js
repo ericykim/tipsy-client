@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import history from '../../history'
 
 import Nav from "../nav/nav";
 import { H1, H4, P1, P2 } from "../../styles/typeStyles";
