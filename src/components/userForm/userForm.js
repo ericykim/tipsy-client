@@ -178,7 +178,7 @@ const UserForm = ({ profile }) => {
             >
               delete
             </StyledSecondaryButton>
-            <StyledLink to="/profile">Back to profile</StyledLink>
+            <StyledLink to={`/profile/${profile.id}`}>Back to profile</StyledLink>
           </>
         ) : (
           <>

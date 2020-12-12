@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import history from '../../history'
 
 import Nav from "../nav/nav";
 import { H1, H4, P1, P2 } from "../../styles/typeStyles";
@@ -19,31 +20,51 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeatOutline } from "@fortawesome/free-regular-svg-icons";
 
-import { searchDrinkByName } from "../../actions/drinkAction";
-import { likeDrink, unlikeDrink } from "../../actions/userAction";
-import LoginModal from "../logInModal/loginModal";
+import { searchDrinkByName, clearDrinkSearch } from '../../actions/drinkAction';
+import { likeDrink, unlikeDrink } from '../../actions/userAction';
+import LoginModal from '../logInModal/loginModal';
 
 const Landing = ({
-  userId,
-  likeDrink,
-  unlikeDrink,
-  likedDrinks,
-  drinks,
-  searchDrinkByName,
-  isLoading,
+    userId,
+    likeDrink,
+    unlikeDrink,
+    likedDrinks,
+    drinks,
+    searchDrinkByName,
+    clearDrinkSearch,
+    isLoading,
+    ...props
 }) => {
   const [searchDrink, setSearchDrink] = useState("");
   const [modal, setModal] = useState(false);
 
-  const setSearchQuery = (event) => {
-    setSearchDrink(event.target.value);
-  };
+    useEffect(() => {
+        //we could use a library, but for one query param it's not worth it
+        const queryParam = props.location.search.split('=');
+        if (queryParam[1] === undefined) {
+            setSearchDrink('');
+            clearDrinkSearch();
+        } else {
+            const drinkName = queryParam[1];
+            setSearchDrink(queryParam[1]);
+            searchDrinkByName(searchDrink, 0, 10);
+        }
+    }, [props.location.search]);
 
-  const enterSearch = (e) => {
-    if (e.code === "Enter") {
-      searchDrinkByName(searchDrink, 0, 5);
-    }
-  };
+    const setSearchQuery = (event) => {
+        setSearchDrink(event.target.value);
+    };
+
+    const searchForDrink = () => {
+        searchDrinkByName(searchDrink, 0, 10);
+        history.push(`/search?drinkname=${searchDrink}`);
+    };
+
+    const enterSearch = (e) => {
+        if (e.code === 'Enter') {
+            searchForDrink();
+        }
+    };
 
   const toggle = () => setModal(!modal);
 
@@ -69,7 +90,7 @@ const Landing = ({
           type="text"
         />
         <SearchButton
-          onClick={() => searchDrinkByName(searchDrink, 0, 5)}
+          onClick={() => searchForDrink()}
           id="searchButton"
           className="btn col-2 col-lg-1"
         >
@@ -159,11 +180,12 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    searchDrinkByName: (drinkName, offset, limit) =>
-      searchDrinkByName(dispatch, drinkName, offset, limit),
-    likeDrink: (userId, drink) => likeDrink(dispatch, userId, drink),
-    unlikeDrink: (userId, drinkId) => unlikeDrink(dispatch, userId, drinkId),
-  };
+    return {
+        searchDrinkByName: (drinkName, offset, limit) =>
+            searchDrinkByName(dispatch, drinkName, offset, limit),
+        likeDrink: (userId, drink) => likeDrink(dispatch, userId, drink),
+        unlikeDrink: (userId, drinkId) => unlikeDrink(dispatch, userId, drinkId),
+        clearDrinkSearch: () => clearDrinkSearch(dispatch),
+    };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);

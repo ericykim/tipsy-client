@@ -29,7 +29,7 @@ const Nav = ({ logoutUser, profile }) => {
             <NavButton onClick={() => logout()}>
               <P1>Logout</P1>
             </NavButton>
-            <StyledLink to="/profile" className="mr-3">
+            <StyledLink to={`/profile/${profile.id}`} className="mr-3">
               <P1>Profile</P1>
             </StyledLink>
           </>

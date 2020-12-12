@@ -37,10 +37,10 @@ ReactDOM.render(
         <ScrollToTop />
         <div style={{ minHeight: "100vh" }}>
           <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/profile" component={Profile} />
+            <Route exact path={["/", "/search"]} component={Landing} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/profile/:profileId" component={Profile} />
             <Route exact path="/privacy-policy" component={PrivacyContainer} />
             <Route exact path="/deleted" component={Deleted} />
             <Route exact path="/editProfile" component={UserForm} />
