@@ -49,3 +49,11 @@ export const ListItemGroup = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const Intro = styled.div.attrs({className: 'col-7'})`
+  background-color: white;
+  border: 1px solid ${SITE_RED};
+  text-align: center;
+  padding: 35px;
+  margin: auto;
+`

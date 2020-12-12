@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { SITE_RED } from '../../styles/colors';
-import logo from '../../assets/SVG/logo.svg';
+import { SITE_RED, TEXT_BLACK } from '../../styles/colors';
+import whiteLogo from '../../assets/SVG/logo_white.svg';
 import { Logo } from '../../styles/globalElements';
 import { P1, P2 } from '../../styles/typeStyles';
 
@@ -11,7 +11,7 @@ export const FooterWrapper = styled.div`
     bottom: 0;
     width: 100%;
     text-align: center;
-    background-color: ${SITE_RED};
+    background-color: ${TEXT_BLACK};
     padding: 20px;
 
     display: flex;
@@ -59,7 +59,7 @@ const Footer = () => {
 
     return (
         <FooterWrapper>
-            <Logo src={logo} />
+            <Logo src={whiteLogo} />
             <SiteMap className={'container'}>
                 {siteMap.map((link, i) => {
                     return (
@@ -70,7 +70,7 @@ const Footer = () => {
                 })}
             </SiteMap>
             <BottomText>
-                <span>Cheers 🍻</span>
+                <span>Cheers 🍻 </span>
                 <span>from MP, CL, & EK</span>
             </BottomText>
         </FooterWrapper>

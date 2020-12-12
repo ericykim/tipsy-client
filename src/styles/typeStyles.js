@@ -65,6 +65,13 @@ export const H3 = styled.h3`
   color: ${SITE_RED}
 `;
 
+export const H4 = styled.h4`
+  font-size: 24px;
+  font-family: Montserrat;
+  font-weight: 400;
+  color: ${TEXT_BLACK}
+`;
+
 export const Label = styled.p`
   font-size: 20px;
   color: blue;
@@ -93,6 +100,8 @@ export const P2 = styled.p`
   font-style: normal;
   font-size: 14px;
   margin-bottom: 0;
+  color: ${props => props.color ? props.color : TEXT_BLACK};
+
 `;
 
 export const SmallText = styled.p`
