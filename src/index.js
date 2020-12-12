@@ -21,6 +21,7 @@ import ScrollToTop from "./utils/scrollToTop";
 import RecipeForm from "./components/recipeForm/recipeForm";
 import Deleted from "./components/deleted/deleted";
 import history from './history'
+import UserForm from "./components/userForm/userForm";
 
 const rootReducer = combineReducers({
   drinkReducer,
@@ -42,8 +43,9 @@ ReactDOM.render(
             <Route exact path="/profile/:profileId" component={Profile} />
             <Route exact path="/privacy-policy" component={PrivacyContainer} />
             <Route exact path="/deleted" component={Deleted} />
-            <Route exact path={["/recipeForm", "/recipeForm/:drinkId"]} component={RecipeForm} />
-            <Route exact path="/:drinkId" component={Recipe} />
+            <Route exact path="/editProfile" component={UserForm} />
+            <Route path={["/recipeForm", "/recipeForm/:drinkId"]} exact component={RecipeForm} />
+            <Route path="/:drinkId" component={Recipe} />
             {/* <Route component={NotFound} /> */}
           </Switch>
         </div>

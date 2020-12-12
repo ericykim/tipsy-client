@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { P1, SmallText } from '../../styles/typeStyles';
-import { FormInput, StyledButton, UnorderedList, ListItem } from '../../styles/globalElements';
+import { FormInput, StyledButton, UnorderedList, ListItem, StyledSecondaryButton } from '../../styles/globalElements';
 import Nav from '../nav/nav';
 import { connect } from 'react-redux';
 import { GREEN, SITE_RED } from '../../styles/colors';
@@ -100,7 +100,7 @@ const RecipeForm = ({
         <div className='container'>
             <Nav />
             <div className='row justify-content-center align-items-center'>
-                <div className='column col-6 my-5'>
+                <div className='column col-12 col-md-8 col-lg-6 my-5'>
                     <label>
                         <P1 className='mb-0'>drink name *</P1>
                     </label>
@@ -236,13 +236,13 @@ const RecipeForm = ({
                             >
                                 <P1>update</P1>
                             </StyledButton>
-                            <StyledButton
+                            <StyledSecondaryButton
                                 color={SITE_RED}
                                 onClick={() => deleteSelectedDrink()}
                                 className='btn btn-success col-12 my-3'
                             >
                                 <P1>delete</P1>
-                            </StyledButton>
+                            </StyledSecondaryButton>
                         </>
                     ) : (
                         <StyledButton

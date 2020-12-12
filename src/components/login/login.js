@@ -29,7 +29,7 @@ const Login = ({ loginUser }) => {
                 </Link>
             </LogoContainer>
             <div className='row justify-content-center align-items-center'>
-                <div className='column col-6 my-5'>
+                <div className='column col-12 col-md-8 col-lg-6 my-5'>
                     <label>
                         <P1 className='mb-0'>username</P1>
                     </label>
