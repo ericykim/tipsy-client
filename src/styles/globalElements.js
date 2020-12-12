@@ -5,6 +5,7 @@ import { SITE_HIGHLIGHT, SITE_RED, TEXT_BLACK } from "./colors";
 
 export const SearchArrowImg = styled.img`
     width: 100%;
+    z-index: 1;
 `
 
 export const Logo = styled.img`
@@ -27,7 +28,21 @@ export const StyledButton = styled.button`
 
     :hover {
         border: solid 1px ${SITE_HIGHLIGHT};
-        background-color: ${TEXT_BLACK}
+        background-color: ${TEXT_BLACK};
+        color: white;
+    }
+`
+
+export const StyledSecondaryButton = styled.button`
+    border-radius: 0;
+    background-color: transparent;
+    color: ${SITE_RED};
+    border: solid 1px ${props=> props.border ? props.border : SITE_RED};
+
+    :hover {
+        border: solid 1px ${SITE_HIGHLIGHT};
+        background-color: ${TEXT_BLACK};
+        color: white;
     }
 `
 

@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -10,7 +9,7 @@ const LoginModal = ({toggle, modal}) => {
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Enjoying Tipsy so far?</ModalHeader>
                 <ModalBody>
-                    Looks like you are trying to access some of Tipsy's awesome features. Login in
+                    Looks like you are trying to access some of Tipsy's awesome features. Log in
                     or make an account to use them!
                 </ModalBody>
                 <ModalFooter>
