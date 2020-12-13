@@ -17,13 +17,13 @@ const Nav = ({ logoutUser, profile }) => {
   };
   return (
     <div className="row justify-content-between my-4">
-      <div className="col-4"></div>
+      <div className="d-none d-md-block col-4"></div>
       <LogoContainer className="col-4">
         <Link to="/">
           <Logo src={logo} />
         </Link>
       </LogoContainer>
-      <Pages className="col-4">
+      <Pages className="col-8 col-md-4">
         {loggedIn ? (
           <>
             <NavButton onClick={() => logout()}>
