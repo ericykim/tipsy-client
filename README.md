@@ -14,3 +14,8 @@ Open the project and run 'mvn clean install'
 This will create a jar file in the 'target' directory
 To run the jar:
 java -jar <file path to jar>
+  
+## FYI
+We are using our own API Endpoints and not utilizing a 3rd party. We cleared this with Jose.
+Our API's live under www.tipsy.buzz/api/ if you want to access them. 
+  
