@@ -13,7 +13,7 @@ const Deleted = () => {
         </Link>
       </LogoContainer>
       <div>
-        <P1>Drink was deleted</P1>
+        <P1>Deleted.</P1>
       </div>
     </div>
   );

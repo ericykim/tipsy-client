@@ -20,6 +20,8 @@ const Profile = ({ searchProfile, getProfileById, profile, ...props }) => {
     let userProfile = profile;
     const profileId = props.match.params.profileId;
 
+    console.log('this is profile on profuie page', profile)
+
     useEffect(() => {
         if (profileId != profile.id) {
             getProfileById(profileId);

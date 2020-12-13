@@ -9,8 +9,6 @@ import {
   LogoContainer,
 } from "../../styles/globalElements";
 import logo from "../../assets/SVG/logo.svg";
-import userService from "../../services/userService";
-import history from "../../history";
 import UserForm from "../userForm/userForm";
 
 const Signup = () => {

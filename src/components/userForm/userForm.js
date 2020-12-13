@@ -7,16 +7,14 @@ import {
   StyledSelect,
   StyledSecondaryButton,
 } from "../../styles/globalElements";
-import logo from "../../assets/SVG/logo.svg";
-import userService from "../../services/userService";
 import history from "../../history";
 import { connect } from "react-redux";
-import { getProfile } from "../../actions/userAction";
-import { BG_COLOR } from "../../styles/colors";
+import { getProfile, logoutUser, registerUser, updateUser, deleteUser } from "../../actions/userAction";
 import { StyledLink } from "../nav/styled";
+import { logout } from "../../services/userService";
 
-const UserForm = ({ profile }) => {
-  console.log("this is profule", profile);
+const UserForm = ({ profile, registerUser, updateUser, deleteUser }) => {
+
   const [userType, setUserType] = useState("BARTENDER");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +24,7 @@ const UserForm = ({ profile }) => {
   const [verifyPassword, setVerifyPassword] = useState("");
 
   useEffect(() => {
-    if (profile) {
+    if (profile.id) {
       setFirstName(profile.firstName);
       setLastName(profile.lastName);
       setUsername(profile.username);
@@ -45,7 +43,7 @@ const UserForm = ({ profile }) => {
       verifyPassword: verifyPassword,
       userType: userType,
     };
-    userService.registerUser(user).then((newUser) => console.log(newUser));
+    registerUser(user);
     history.push("/");
   };
 
@@ -58,11 +56,14 @@ const UserForm = ({ profile }) => {
       username: username,
       password: password,
     };
-    console.log('user w/ updated info', updatedUser);
+    updateUser(profile.id, updatedUser);
+    history.push(`/profile/${profile.id}`)
   };
 
-  const deleteUser = () => {
-    console.log('user id to be deleted', profile.id);
+  const deletedUser = () => {
+    // deleteUser(profile.id)
+    // history.push('/deleted')
+    console.log('delete userId: ', profile.id)
   };
 
   return (
@@ -132,7 +133,7 @@ const UserForm = ({ profile }) => {
               type="password"
             />
           </div>
-          {!profile && (
+          {!profile.id && (
             <div className="col-6 pl-2 pr-0">
               <label>
                 <P1 className="mb-0">Verify Password</P1>
@@ -148,7 +149,7 @@ const UserForm = ({ profile }) => {
             </div>
           )}
         </div>
-        {!profile && (
+        {!profile.id && (
           <>
             <label>
               <P1 className="mb-0">Who You Are</P1>
@@ -164,7 +165,7 @@ const UserForm = ({ profile }) => {
             </StyledSelect>
           </>
         )}
-        {profile ? (
+        {profile.id ? (
           <>
             <StyledButton
               className="btn btn-block mt-4 mb-2"
@@ -172,12 +173,12 @@ const UserForm = ({ profile }) => {
             >
               update
             </StyledButton>
-            <StyledSecondaryButton
+            {/* <StyledSecondaryButton
               className="btn btn-block my-4 mb-2"
-              onClick={() => deleteUser()}
+              onClick={() => deletedUser()}
             >
               delete
-            </StyledSecondaryButton>
+            </StyledSecondaryButton> */}
             <StyledLink to={`/profile/${profile.id}`}>Back to profile</StyledLink>
           </>
         ) : (
@@ -205,6 +206,10 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     getProfile: () => getProfile(dispatch),
+    logoutUser: () => logoutUser(dispatch),
+    registerUser: (user) => registerUser(dispatch, user),
+    updateUser: (userId, user) => updateUser(dispatch, userId, user),
+    deleteUser: (userId) => deleteUser(dispatch, userId)
   };
 };
 
