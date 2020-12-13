@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { SITE_RED } from "../../styles/colors";
 
@@ -50,10 +49,16 @@ export const ListItemGroup = styled.div`
   align-items: center;
 `;
 
-export const Intro = styled.div.attrs({className: 'col-7'})`
+export const Intro = styled.div.attrs({className: 'col-12 col-md-7'})`
   background-color: white;
   border: 1px solid ${SITE_RED};
   text-align: center;
   padding: 35px;
   margin: auto;
+  margin-top: 100px;
 `
+
+export const  Ellipsis = styled.div`
+width: 90%; 
+`
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { SITE_RED, TEXT_BLACK } from '../../styles/colors';
+import { TEXT_BLACK } from '../../styles/colors';
 import whiteLogo from '../../assets/SVG/logo_white.svg';
 import { Logo } from '../../styles/globalElements';
 import { P1, P2 } from '../../styles/typeStyles';

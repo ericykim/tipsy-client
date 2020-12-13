@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import history from '../../history'
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import history from "../../history";
 
 import Nav from "../nav/nav";
 import { H1, H4, P1, P2 } from "../../styles/typeStyles";
 import { SITE_RED } from "../../styles/colors";
 import { SearchArrowImg } from "../../styles/globalElements";
 import {
+  Ellipsis,
   Intro,
   ListItemGroup,
   SearchButton,
@@ -20,51 +21,51 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeatOutline } from "@fortawesome/free-regular-svg-icons";
 
-import { searchDrinkByName, clearDrinkSearch } from '../../actions/drinkAction';
-import { likeDrink, unlikeDrink } from '../../actions/userAction';
-import LoginModal from '../logInModal/loginModal';
+import { searchDrinkByName, clearDrinkSearch } from "../../actions/drinkAction";
+import { likeDrink, unlikeDrink } from "../../actions/userAction";
+import LoginModal from "../logInModal/loginModal";
 
 const Landing = ({
-    userId,
-    likeDrink,
-    unlikeDrink,
-    likedDrinks,
-    drinks,
-    searchDrinkByName,
-    clearDrinkSearch,
-    isLoading,
-    ...props
+  userId,
+  likeDrink,
+  unlikeDrink,
+  likedDrinks,
+  drinks,
+  searchDrinkByName,
+  clearDrinkSearch,
+  isLoading,
+  ...props
 }) => {
   const [searchDrink, setSearchDrink] = useState("");
   const [modal, setModal] = useState(false);
 
-    useEffect(() => {
-        //we could use a library, but for one query param it's not worth it
-        const queryParam = props.location.search.split('=');
-        if (queryParam[1] === undefined) {
-            setSearchDrink('');
-            clearDrinkSearch();
-        } else {
-            const drinkName = queryParam[1];
-            setSearchDrink(queryParam[1]);
-            searchDrinkByName(searchDrink, 0, 10);
-        }
-    }, [props.location.search]);
+  useEffect(() => {
+    //we could use a library, but for one query param it's not worth it
+    const queryParam = props.location.search.split("=");
+    if (queryParam[1] === undefined) {
+      setSearchDrink("");
+      clearDrinkSearch();
+    } else {
+      const drinkName = queryParam[1];
+      setSearchDrink(queryParam[1]);
+      searchDrinkByName(searchDrink, 0, 10);
+    }
+  }, [props.location.search]);
 
-    const setSearchQuery = (event) => {
-        setSearchDrink(event.target.value);
-    };
+  const setSearchQuery = (event) => {
+    setSearchDrink(event.target.value);
+  };
 
-    const searchForDrink = () => {
-        searchDrinkByName(searchDrink, 0, 10);
-        history.push(`/search?drinkname=${searchDrink}`);
-    };
+  const searchForDrink = () => {
+    searchDrinkByName(searchDrink, 0, 10);
+    history.push(`/search?drinkname=${searchDrink}`);
+  };
 
-    const enterSearch = (e) => {
-        if (e.code === 'Enter') {
-            searchForDrink();
-        }
-    };
+  const enterSearch = (e) => {
+    if (e.code === "Enter") {
+      searchForDrink();
+    }
+  };
 
   const toggle = () => setModal(!modal);
 
@@ -97,20 +98,23 @@ const Landing = ({
           <SearchArrowImg src={searchArrow} alt={"tipsy logo"} />
         </SearchButton>
       </SearchContainer>
-      {(drinks.length === 0 && !isLoading) && (
-        <Intro>
-          <div className="mb-4">
-            <H4>Welcome to Tipsy!</H4>
-            <P2 color={SITE_RED}>the cocktail encyclopedia</P2>
-          </div>
-          <div>
-            <P1>
-              Seach a drink from the curation of classics and our Bartender's
-              originals. Have a unqiue drink of your own? Sign up to start
-              sharing your creation.
-            </P1>
-          </div>
-        </Intro>
+      {drinks.length === 0 && !isLoading && (
+        <>
+          <P1>No results... try another search.</P1>
+          <Intro>
+            <div className="mb-4">
+              <H4>Welcome to Tipsy!</H4>
+              <P2 color={SITE_RED}>the cocktail encyclopedia</P2>
+            </div>
+            <div>
+              <P1>
+                Seach a drink from the curation of classics and our Bartender's
+                originals. Have a unqiue drink of your own? Sign up to start
+                sharing your creation.
+              </P1>
+            </div>
+          </Intro>
+        </>
       )}
       {isLoading ? (
         <P1>Searching ... </P1>
@@ -119,13 +123,19 @@ const Landing = ({
           {drinks.map((drink, i) => {
             return (
               <ListItemGroup key={i}>
+                <Ellipsis>
                 <Link
                   to={`/${drink.drinkId}`}
                   style={{ textDecoration: "none" }}
                 >
-                  <H1 title={drink.drinkName}>{drink.drinkName}</H1>
+                  
+                    <H1 title={drink.drinkName}>{drink.drinkName}</H1>{" "}
+        
                 </Link>
-                {userId && likedDrinks.find(
+                </Ellipsis>
+
+                {userId &&
+                likedDrinks.find(
                   (likedDrink) => likedDrink.drinkId === drink.drinkId
                 ) ? (
                   <>
@@ -180,12 +190,12 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        searchDrinkByName: (drinkName, offset, limit) =>
-            searchDrinkByName(dispatch, drinkName, offset, limit),
-        likeDrink: (userId, drink) => likeDrink(dispatch, userId, drink),
-        unlikeDrink: (userId, drinkId) => unlikeDrink(dispatch, userId, drinkId),
-        clearDrinkSearch: () => clearDrinkSearch(dispatch),
-    };
+  return {
+    searchDrinkByName: (drinkName, offset, limit) =>
+      searchDrinkByName(dispatch, drinkName, offset, limit),
+    likeDrink: (userId, drink) => likeDrink(dispatch, userId, drink),
+    unlikeDrink: (userId, drinkId) => unlikeDrink(dispatch, userId, drinkId),
+    clearDrinkSearch: () => clearDrinkSearch(dispatch),
+  };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Landing);
