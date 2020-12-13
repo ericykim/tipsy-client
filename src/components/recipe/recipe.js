@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { P1, P1Bold, Title } from '../../styles/typeStyles';
-import { Link } from 'react-router-dom';
 import Nav from '../nav/nav';
 import { getDrinkById } from '../../actions/drinkAction';
 import { connect } from 'react-redux';
 import { SITE_RED } from '../../styles/colors';
 import { OrderedList, UnorderedList } from '../../styles/globalElements';
 import { ImageContainer, DrinkImage } from './styled';
+import { StyledLink } from '../nav/styled';
 
 const Recipe = ({ selectedDrink, getDrinkById, isLoading, ...props }) => {
     const { drinkId } = props.match.params;
@@ -28,12 +28,12 @@ const Recipe = ({ selectedDrink, getDrinkById, isLoading, ...props }) => {
                     <Title className='mb-4' static>
                         {selectedDrink.drinkName}
                     </Title>
-                    <p>
-                        Created By:
-                        <Link to={`/profile/${selectedDrink.creatorId}`}>
+                    <P1 color={SITE_RED} className='mb-4'>
+                        Created By:&nbsp;
+                        <StyledLink underline="true" to={`/profile/${selectedDrink.creatorId}`}>
                             {selectedDrink.creatorUsername}
-                        </Link>
-                    </p>
+                        </StyledLink>
+                    </P1>
                     <div className='d-block d-sm-flex'>
                         <div className='col-12 col-sm-3'>
                             <P1Bold color={SITE_RED}>Ingredients</P1Bold>

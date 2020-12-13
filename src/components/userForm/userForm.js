@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import {
   FormInput,
   StyledButton,
-  StyledSelect,
-  StyledSecondaryButton,
+  StyledSelect
 } from "../../styles/globalElements";
 import history from "../../history";
 import { connect } from "react-redux";
 import { getProfile, logoutUser, registerUser, updateUser, deleteUser } from "../../actions/userAction";
 import { StyledLink } from "../nav/styled";
-import { logout } from "../../services/userService";
 
 const UserForm = ({ profile, registerUser, updateUser, deleteUser }) => {
 

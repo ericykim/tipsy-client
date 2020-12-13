@@ -13,6 +13,10 @@ export const H1 = styled.h1`
   -webkit-text-stroke: 2px ${TEXT_BLACK};
   white-space: nowrap;
 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 5px;
+
   @media (min-width: 768px) {
     font-size: 125px;
     -webkit-text-stroke: 3px ${TEXT_BLACK};

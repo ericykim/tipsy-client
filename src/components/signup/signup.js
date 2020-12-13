@@ -1,10 +1,6 @@
-import React, { useState } from "react";
-import { P1, SmallText } from "../../styles/typeStyles";
+import React from "react";
 import { Link } from "react-router-dom";
 import {
-  FormInput,
-  StyledButton,
-  StyledSelect,
   Logo,
   LogoContainer,
 } from "../../styles/globalElements";

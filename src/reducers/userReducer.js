@@ -1,6 +1,3 @@
-import { UPDATE_USER } from "../actions/userAction";
-import { profile } from "../services/userService";
-
 const initialState = {
   profile: {
     createdDrinks: [],
